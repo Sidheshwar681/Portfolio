@@ -141,6 +141,15 @@ cd server
 npm run start
 ```
 
+## GitHub Pages
+
+The frontend can be published to GitHub Pages at `https://sidheshwar681.github.io/Portfolio/`.
+
+- GitHub Pages hosts the static React app only.
+- The Express backend is not deployed on GitHub Pages.
+- On the GitHub Pages version, the contact form opens the visitor's email app by default.
+- If you later deploy the backend elsewhere, you can point the frontend at it with `VITE_CONTACT_API_URL`.
+
 ## Notes
 
 - If `MONGO_URI` is not set, the backend skips database storage.

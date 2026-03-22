@@ -1,7 +1,6 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { projects } from '../../data/index.js';
-import axios from 'axios';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },

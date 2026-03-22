@@ -9,6 +9,21 @@ const fadeUp = {
 };
 
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
+const CONTACT_EMAIL = 'kokalgesidheshwar45@gmail.com';
+
+const getContactEndpoint = () => {
+  const configuredUrl = import.meta.env.VITE_CONTACT_API_URL?.trim();
+
+  if (configuredUrl) {
+    return configuredUrl;
+  }
+
+  if (typeof window !== 'undefined' && ['localhost', '127.0.0.1'].includes(window.location.hostname)) {
+    return '/api/contact';
+  }
+
+  return null;
+};
 
 const InputField = ({ label, type = 'text', name, value, onChange, rows }) => {
   const [focused, setFocused] = useState(false);
@@ -46,20 +61,39 @@ const Contact = () => {
   const inView = useInView(ref, { once: true, margin: '-100px' });
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [loading, setLoading] = useState(false);
+  const contactEndpoint = getContactEndpoint();
 
-  const handleChange = (e) => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+  const handleChange = (e) => setForm((currentForm) => ({ ...currentForm, [e.target.name]: e.target.value }));
+
+  const openMailClient = () => {
+    const params = new URLSearchParams({
+      subject: form.subject || `Portfolio message from ${form.name}`,
+      body: `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`,
+    });
+
+    window.location.href = `mailto:${CONTACT_EMAIL}?${params.toString()}`;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
-      await axios.post('/api/contact', form);
-      toast.success('Message sent! I\'ll get back to you soon 🚀', {
+      if (!contactEndpoint) {
+        openMailClient();
+        toast.success('Opening your email app so you can send this message directly.', {
+          style: { background: '#0d1427', color: '#e2e8f0', border: '1px solid rgba(0,212,255,0.3)' },
+        });
+        return;
+      }
+
+      await axios.post(contactEndpoint, form);
+      toast.success('Message sent! I will get back to you soon.', {
         style: { background: '#0d1427', color: '#e2e8f0', border: '1px solid rgba(0,212,255,0.3)' },
       });
       setForm({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
-      toast.error('Failed to send. Please try again.', {
+      toast.error('Failed to send. Please try direct email instead.', {
         style: { background: '#0d1427', color: '#e2e8f0', border: '1px solid rgba(255,45,120,0.3)' },
       });
     } finally {
@@ -80,12 +114,11 @@ const Contact = () => {
           <p className="text-sm font-mono mb-3" style={{ color: '#ff2d78' }}>06. Contact</p>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">Get In Touch</h2>
           <p className="text-slate-500 max-w-xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you. Send me a message and I'll respond as soon as possible.
+            Have a project in mind or want to collaborate? I would love to hear from you.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-          {/* Info cards */}
           <motion.div
             initial="hidden" animate={inView ? 'visible' : 'hidden'}
             variants={stagger}
@@ -93,7 +126,7 @@ const Contact = () => {
           >
             {[
               { icon: '📍', label: 'Location', value: 'Pune, Maharashtra', color: '#00d4ff' },
-              { icon: '📧', label: 'Email', value: 'kokalgesidheshwar45@gmail.com', color: '#b44ffd' },
+              { icon: '📧', label: 'Email', value: CONTACT_EMAIL, color: '#b44ffd' },
               { icon: '💼', label: 'Status', value: 'Open to Opportunities', color: '#00fff5' },
               { icon: '⚡', label: 'Response Time', value: 'Within 24 hours', color: '#f59e0b' },
             ].map(({ icon, label, value, color }) => (
@@ -115,7 +148,6 @@ const Contact = () => {
             ))}
           </motion.div>
 
-          {/* Form */}
           <motion.div
             initial="hidden" animate={inView ? 'visible' : 'hidden'}
             variants={fadeUp}
@@ -139,6 +171,12 @@ const Contact = () => {
               <div className="mb-7">
                 <InputField label="Message" name="message" value={form.message} onChange={handleChange} rows={6} />
               </div>
+
+              {!contactEndpoint && (
+                <p className="text-sm text-slate-500 mb-6">
+                  On the GitHub Pages version, this opens your email app instead of calling the backend server.
+                </p>
+              )}
 
               <motion.button
                 type="submit"
