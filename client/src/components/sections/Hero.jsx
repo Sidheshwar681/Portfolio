@@ -23,7 +23,7 @@ const Hero = () => {
         style={{ background: 'linear-gradient(to bottom, transparent, #050816)' }} />
 
       {/* Content */}
-      <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
+      <div className="relative z-20 text-center px-6 pt-20 md:pt-24 max-w-5xl mx-auto">
         {/* Name */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
