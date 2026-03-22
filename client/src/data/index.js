@@ -9,7 +9,7 @@ export const personalInfo = {
     "Open Source Contributor",
   ],
   bio: "I craft immersive digital experiences at the intersection of code and creativity. Specializing in the MERN stack, I build high-performance web applications with stunning interfaces that push the boundaries of what's possible on the web.",
-  location: "San Francisco, CA",
+  location: "pune, Maharashtra",
   available: true,
   email: "kalgesidheshwar45@gmail.com",
   github: "https://github.com/Sidheshwar681",
