@@ -70,7 +70,7 @@ const Footer = () => {
                   border: '1px solid rgba(0,212,255,0.2)',
                 }}
               >
-                <span style={{ background: 'linear-gradient(135deg, #00d4ff, #b44ffd)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>AD</span>
+                <span style={{ background: 'linear-gradient(135deg, #00d4ff, #b44ffd)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>SD</span>
               </div>
               <span className="font-display font-semibold text-slate-400 group-hover:text-white transition-colors">
                 Sidheshwar Kokalge

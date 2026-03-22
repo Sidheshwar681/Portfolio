@@ -67,7 +67,7 @@ const LoadingScreen = ({ onComplete }) => {
                 }}>
                 <span className="text-3xl font-bold font-display"
                   style={{ background: 'linear-gradient(135deg, #00d4ff, #b44ffd)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                  AD
+                  SD
                 </span>
               </div>
 

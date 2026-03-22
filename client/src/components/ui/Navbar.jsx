@@ -61,10 +61,10 @@ const Navbar = () => {
                 background: 'linear-gradient(135deg, #00d4ff, #b44ffd)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-              }}>AD</span>
+              }}>SD</span>
             </div>
             <span className="hidden sm:block font-display font-semibold text-sm text-slate-300 group-hover:text-white transition-colors">
-              Alex Dev
+              Sid Dev
             </span>
           </motion.button>
 
