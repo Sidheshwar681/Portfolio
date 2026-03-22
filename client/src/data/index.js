@@ -11,18 +11,18 @@ export const personalInfo = {
   bio: "I craft immersive digital experiences at the intersection of code and creativity. Specializing in the MERN stack, I build high-performance web applications with stunning interfaces that push the boundaries of what's possible on the web.",
   location: "San Francisco, CA",
   available: true,
-  email: "kokalgesidheshwar45@gmail.com",
-  github: "https://github.com/yourusername",
-  linkedin: "https://linkedin.com/in/yourusername",
-  twitter: "https://twitter.com/yourusername",
+  email: "kalgesidheshwar45@gmail.com",
+  github: "https://github.com/Sidheshwar681",
+  linkedin: "https://www.linkedin.com/in/siddheshwar-kokalge-18b5152b9/",
+  twitter: "https://x.com/sidheshwar49",
   resume: "#",
 };
 
 export const stats = [
   { number: "6", label: "Months Experience" },
-  { number: "50+", label: "Projects Built" },
-  { number: "25+", label: "Happy Clients" },
-  { number: "99%", label: "Client Satisfaction" },
+  { number: "5+", label: "Projects Built" },
+  { number: "2+", label: "Happy Clients" },
+  { number: "89%", label: "Client Satisfaction" },
 ];
 
 export const skills = [

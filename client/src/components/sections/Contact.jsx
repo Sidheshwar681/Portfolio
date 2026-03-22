@@ -9,7 +9,7 @@ const fadeUp = {
 };
 
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
-const CONTACT_EMAIL = 'kokalgesidheshwar45@gmail.com';
+const CONTACT_EMAIL = 'kalgesidheshwar45@gmail.com';
 
 const getContactEndpoint = () => {
   const configuredUrl = import.meta.env.VITE_CONTACT_API_URL?.trim();
